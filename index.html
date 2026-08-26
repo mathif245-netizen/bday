@@ -4,182 +4,204 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Just for uh 🎀</title>
+<title>Just for uh🎀</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+  scroll-behavior:smooth;
 }
 
-body {
-  margin: 0;
-  background: #faf9f7;
-  color: #302d2b;
-  font-family: Georgia, "Times New Roman", serif;
+body{
+  margin:0;
+  background:#fbf8f5;
+  color:#302a2a;
+  font-family:Georgia,"Times New Roman",serif;
+  overflow-x:hidden;
 }
 
-.screen {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 22px;
+section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:35px 22px;
+  position:relative;
 }
 
-.hero {
-  text-align: center;
+.container{
+  width:min(680px,100%);
+  position:relative;
+  z-index:2;
+}
+
+.center{
+  text-align:center;
+}
+
+.small{
+  font-family:Arial,sans-serif;
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  opacity:.48;
+}
+
+h1{
+  font-size:clamp(50px,14vw,88px);
+  font-weight:400;
+  letter-spacing:-3px;
+  margin:20px 0 14px;
+}
+
+h2{
+  font-size:clamp(28px,7vw,42px);
+  font-weight:400;
+  margin:12px 0 25px;
+}
+
+p{
+  font-size:17px;
+  line-height:1.9;
+}
+
+.hero{
   background:
-    radial-gradient(circle at 15% 20%, rgba(220,190,200,.25), transparent 28%),
-    radial-gradient(circle at 85% 75%, rgba(210,190,170,.2), transparent 30%),
-    #faf9f7;
+    radial-gradient(circle at 15% 20%,rgba(214,170,185,.25),transparent 27%),
+    radial-gradient(circle at 85% 75%,rgba(220,190,160,.22),transparent 30%),
+    #fbf8f5;
 }
 
-.container {
-  width: min(650px, 100%);
+.hero-sub{
+  max-width:440px;
+  margin:auto;
+  opacity:.68;
 }
 
-.tiny {
-  font-family: Arial, sans-serif;
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  opacity: .5;
+.button{
+  display:inline-block;
+  margin-top:30px;
+  padding:14px 27px;
+  border-radius:999px;
+  border:1px solid rgba(50,40,40,.15);
+  background:rgba(255,255,255,.7);
+  color:#302a2a;
+  text-decoration:none;
+  font-family:Arial,sans-serif;
+  font-size:13px;
+  transition:.3s ease;
+  box-shadow:0 12px 35px rgba(40,30,30,.08);
 }
 
-h1 {
-  font-size: clamp(48px, 13vw, 82px);
-  font-weight: 400;
-  letter-spacing: -2px;
-  margin: 18px 0 12px;
+.button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 45px rgba(40,30,30,.13);
 }
 
-.subtitle {
-  font-size: 17px;
-  line-height: 1.8;
-  opacity: .7;
-  margin: 0 auto;
-  max-width: 430px;
+.card{
+  background:rgba(255,255,255,.76);
+  border:1px solid rgba(50,40,40,.08);
+  border-radius:30px;
+  padding:42px 30px;
+  box-shadow:0 25px 80px rgba(50,35,35,.08);
+  backdrop-filter:blur(14px);
 }
 
-.button {
-  display: inline-block;
-  margin-top: 35px;
-  padding: 14px 27px;
-  border: 1px solid rgba(50,45,40,.18);
-  border-radius: 999px;
-  background: rgba(255,255,255,.65);
-  color: #302d2b;
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  letter-spacing: .5px;
-  text-decoration: none;
-  box-shadow: 0 12px 35px rgba(40,35,30,.08);
-  transition: .3s ease;
+.divider{
+  width:48px;
+  height:1px;
+  background:rgba(50,40,40,.2);
+  margin:35px auto;
 }
 
-.button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 45px rgba(40,35,30,.12);
+.highlight{
+  background:rgba(245,225,232,.48);
+  border-radius:22px;
+  padding:23px 22px;
+  margin:25px 0;
 }
 
-.note {
-  margin-top: 65px;
-  font-size: 12px;
-  opacity: .4;
-  font-style: italic;
+.reels{
+  background:rgba(235,229,218,.5);
 }
 
-.hidden {
-  display: none;
+.faith{
+  background:rgba(226,231,220,.45);
 }
 
-.content {
+.final{
   background:
-    radial-gradient(circle at 10% 10%, rgba(220,190,200,.18), transparent 25%),
-    #faf9f7;
+    radial-gradient(circle at 50% 45%,rgba(220,180,195,.24),transparent 40%),
+    #fbf8f5;
 }
 
-.card {
-  background: rgba(255,255,255,.72);
-  border: 1px solid rgba(50,45,40,.08);
-  border-radius: 32px;
-  padding: 45px 30px;
-  box-shadow: 0 25px 80px rgba(40,35,30,.08);
-  backdrop-filter: blur(12px);
+.fade{
+  animation:fadeUp 1s ease both;
 }
 
-.ribbon {
-  text-align: center;
-  font-size: 38px;
-  margin-bottom: 10px;
-}
-
-.card h2 {
-  font-size: 27px;
-  font-weight: 400;
-  text-align: center;
-  margin: 10px 0 25px;
-}
-
-.card p {
-  font-size: 16px;
-  line-height: 1.9;
-  margin: 17px 0;
-}
-
-.divider {
-  width: 45px;
-  height: 1px;
-  background: rgba(50,45,40,.25);
-  margin: 38px auto;
-}
-
-.center {
-  text-align: center;
-}
-
-.fade {
-  animation: fadeUp 1s ease forwards;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(24px);
   }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
 }
 
-.float {
-  animation: floating 4s ease-in-out infinite;
+.float{
+  animation:float 4s ease-in-out infinite;
 }
 
-@keyframes floating {
-  0%,100% {
-    transform: translateY(0);
-  }
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
 
-  50% {
-    transform: translateY(-7px);
+.sparkle{
+  position:absolute;
+  font-size:18px;
+  opacity:.35;
+  animation:drift 6s ease-in-out infinite;
+}
+
+.s1{top:18%;left:12%;}
+.s2{top:30%;right:13%;animation-delay:1s;}
+.s3{bottom:20%;left:18%;animation-delay:2s;}
+.s4{bottom:15%;right:18%;animation-delay:3s;}
+
+@keyframes drift{
+  0%,100%{
+    transform:translateY(0) rotate(0deg);
+  }
+  50%{
+    transform:translateY(-15px) rotate(10deg);
   }
 }
 
-@media (max-width: 500px) {
-  .card {
-    padding: 35px 23px;
-    border-radius: 25px;
+.quote{
+  font-style:italic;
+  text-align:center;
+  opacity:.72;
+  font-size:18px;
+}
+
+@media(max-width:500px){
+  section{
+    padding:28px 18px;
   }
 
-  .card p {
-    font-size: 15px;
+  .card{
+    padding:34px 22px;
+    border-radius:25px;
+  }
+
+  p{
+    font-size:15.5px;
   }
 }
 </style>
@@ -187,63 +209,71 @@ h1 {
 
 <body>
 
-<section class="screen hero">
+<!-- OPENING -->
 
-  <div class="container fade">
+<section class="hero">
 
-    <div class="float" style="font-size:34px;">🎀</div>
+  <span class="sparkle s1">✦</span>
+  <span class="sparkle s2">♡</span>
+  <span class="sparkle s3">✦</span>
+  <span class="sparkle s4">♡</span>
 
-    <p class="tiny">10 September</p>
+  <div class="container center fade">
+
+    <div class="float" style="font-size:38px;">🎀</div>
+
+    <div class="small">10 September</div>
 
     <h1>Just for uh🎀</h1>
 
-    <p class="subtitle">
-      A little something I wanted you to have on your special day.
+    <p class="hero-sub">
+      Chupke ek try karyasoo website se wish karne😋
     </p>
 
-    <a href="#letter" class="button">
+    <a href="#birthday" class="button">
       Open this 💌
     </a>
-
-    <p class="note">
-      take your time :)
-    </p>
 
   </div>
 
 </section>
 
 
-<section class="screen content" id="letter">
+<!-- BIRTHDAY -->
+
+<section id="birthday">
 
   <div class="container">
 
     <div class="card fade">
 
-      <div class="ribbon">🎀</div>
+      <div class="center" style="font-size:38px;">🎂</div>
 
-      <h2>A little corner, just for you</h2>
-
-      <p>
-        Happiest birthday, Aiba! 🤍
-      </p>
-
-      <p>
-        I wanted to make something a little different this year.
-        Not just a message that gets buried between all the other
-        birthday wishes, but something you can actually open and
-        read whenever you feel like it.
-      </p>
+      <h2 class="center">
+        Happiest wishes drrr!! 🎂🎀
+      </h2>
 
       <div class="divider"></div>
 
-      <p class="center">
-        There's more coming...
+      <p>
+        idk how we became close but it feels good yrrr
       </p>
 
-      <div class="center">
-        <a href="#next" class="button">Keep going ✨</a>
-      </div>
+      <p>
+        Thumare saath baat karne comfortable se ha nd judged feel gi nai ha
+      </p>
+
+      <p>
+        We’re also classmates from 6th but schl ke baad sech baat karthain
+      </p>
+
+      <p>
+        It would've been better if we were frnds from earlier 😅
+      </p>
+
+      <a href="#funny" class="button">
+        Continue ✨
+      </a>
 
     </div>
 
@@ -252,30 +282,211 @@ h1 {
 </section>
 
 
-<section class="screen content" id="next">
+<!-- HUMOUR -->
+
+<section id="funny">
 
   <div class="container">
 
     <div class="card fade">
 
-      <h2>Before anything else...</h2>
+      <div class="center" style="font-size:35px;">😂</div>
+
+      <h2 class="center">
+        One thing I like about you
+      </h2>
 
       <p>
-        I hope today reminds you that you're appreciated,
-        cared about, and that your presence genuinely matters
-        to the people around you.
-      </p>
-
-      <p>
-        And I hope this little page gives you even a tiny
-        reason to smile today. 🎀
+        You’re genuinely funny 😭 I really like your sense of humour.
+        Even our most random conversations somehow become funny,
+        and I honestly love that about you.
       </p>
 
       <div class="divider"></div>
 
-      <p class="center">
-        Happy Birthday once again 🤍
+      <p class="quote">
+        Somehow you make even the most random conversations fun.
       </p>
+
+      <a href="#reels" class="button">
+        There's more 😭
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- REELS -->
+
+<section id="reels" class="reels">
+
+  <div class="container">
+
+    <div class="card fade">
+
+      <div class="center" style="font-size:35px;">📱</div>
+
+      <h2 class="center">
+        And your reels 😐
+      </h2>
+
+      <div class="highlight">
+
+        <p>
+          Thume sometimes reels bheje ni tho bore maraltha nd some reels ku b react nd reply b kartheni 😐thabb Rathi mai low se feel hotun
+        </p>
+
+      </div>
+
+      <p class="center">
+        Don't underestimate these small things 😭
+      </p>
+
+      <a href="#there" class="button">
+        Okay enough about reels 😂
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- BEING THERE -->
+
+<section id="there">
+
+  <div class="container">
+
+    <div class="card fade">
+
+      <div class="center" style="font-size:35px;">🤍</div>
+
+      <h2 class="center">
+        And one more thing
+      </h2>
+
+      <p>
+        If you're ever tired, frustrated or feeling low,
+        you don't have to pretend that everything is fine.
+      </p>
+
+      <p>
+        You can be open about it with me. You don't have to
+        explain everything perfectly or worry about being judged.
+      </p>
+
+      <div class="highlight">
+
+        <p class="quote">
+          You can just be yourself.
+        </p>
+
+      </div>
+
+      <p>
+        Nd tired se frustrated se tha tho ki pray karo don’t worry much abt anything ma everything is temporary na
+      </p>
+
+      <a href="#faith" class="button">
+        One last thing 🤍
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FAITH -->
+
+<section id="faith" class="faith">
+
+  <div class="container">
+
+    <div class="card fade">
+
+      <div class="center" style="font-size:38px;">🕊️</div>
+
+      <h2 class="center">
+        When things feel heavy
+      </h2>
+
+      <p>
+        Whenever things feel too much, pray.
+        Talk to Allah, make dua and trust Him.
+      </p>
+
+      <p>
+        You don't have to have everything figured out.
+        Some things take time, and that's okay.
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="quote">
+        Allah knows what is in your heart,
+        even the things you can't put into words.
+      </p>
+
+      <p>
+        And if you ever feel tired or frustrated,
+        you can always talk to me too.
+      </p>
+
+      <a href="#final" class="button">
+        Almost there 🎀
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section id="final" class="final">
+
+  <div class="container">
+
+    <div class="card fade center">
+
+      <div class="float" style="font-size:42px;">🎀</div>
+
+      <h2>
+        That's all drrr 😭
+      </h2>
+
+      <div class="divider"></div>
+
+      <p>
+        I just wanted to make something a little different
+        for your birthday.
+      </p>
+
+      <p>
+        I hope you liked this little surprise.
+      </p>
+
+      <p style="font-size:21px;">
+        Happiest birthday once again!! 🎂🎀
+      </p>
+
+      <p>
+        Stay happy, take care of yourself,
+        and keep being you. 🤍
+      </p>
+
+      <div style="margin-top:35px;font-size:25px;">
+        ✨ 🎀 ✨
+      </div>
 
     </div>
 
