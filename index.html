@@ -4,120 +4,92 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Happy Birthday Aiba 🎀</title>
+<title>Just for uh 🎀</title>
 
 <style>
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
+  background: #faf9f7;
+  color: #302d2b;
   font-family: Georgia, "Times New Roman", serif;
-  background: #fdf6f8;
-  color: #4b3840;
-  overflow-x: hidden;
 }
 
-.page {
-  min-height: 100vh;
-}
-
-.intro,
-.letter {
+.screen {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 25px;
-  text-align: center;
+  padding: 30px 22px;
 }
 
-.intro {
-  flex-direction: column;
+.hero {
+  text-align: center;
   background:
-    radial-gradient(circle at 20% 20%, #fff 0 3px, transparent 4px),
-    radial-gradient(circle at 80% 30%, #fff 0 2px, transparent 3px),
-    linear-gradient(145deg, #f9e6ed, #fff8f9);
+    radial-gradient(circle at 15% 20%, rgba(220,190,200,.25), transparent 28%),
+    radial-gradient(circle at 85% 75%, rgba(210,190,170,.2), transparent 30%),
+    #faf9f7;
+}
+
+.container {
+  width: min(650px, 100%);
 }
 
 .tiny {
-  letter-spacing: 3px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  font-size: 11px;
-  opacity: 0.65;
+  opacity: .5;
 }
 
 h1 {
-  font-size: clamp(38px, 10vw, 70px);
-  margin: 12px 0;
-  font-weight: 500;
+  font-size: clamp(48px, 13vw, 82px);
+  font-weight: 400;
+  letter-spacing: -2px;
+  margin: 18px 0 12px;
 }
 
-.sub {
-  max-width: 420px;
-  line-height: 1.7;
-  font-size: 16px;
+.subtitle {
+  font-size: 17px;
+  line-height: 1.8;
+  opacity: .7;
+  margin: 0 auto;
+  max-width: 430px;
 }
 
-button {
-  margin-top: 25px;
-  border: 0;
-  padding: 14px 25px;
-  border-radius: 30px;
-  background: white;
-  color: #8d596b;
-  font-size: 15px;
-  cursor: pointer;
-  box-shadow: 0 8px 25px rgba(100, 50, 70, 0.12);
+.button {
+  display: inline-block;
+  margin-top: 35px;
+  padding: 14px 27px;
+  border: 1px solid rgba(50,45,40,.18);
+  border-radius: 999px;
+  background: rgba(255,255,255,.65);
+  color: #302d2b;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: .5px;
+  text-decoration: none;
+  box-shadow: 0 12px 35px rgba(40,35,30,.08);
+  transition: .3s ease;
 }
 
-button:active {
-  transform: scale(0.96);
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 45px rgba(40,35,30,.12);
 }
 
-.letter {
-  background: linear-gradient(145deg, #fff7f9, #f7e7ed);
-}
-
-.card {
-  width: min(620px, 100%);
-  padding: 45px 30px;
-  background: rgba(255,255,255,0.82);
-  border: 1px solid rgba(150,100,120,0.12);
-  border-radius: 28px;
-  box-shadow: 0 20px 60px rgba(100, 50, 70, 0.12);
-  animation: appear 1s ease;
-}
-
-.cake {
-  font-size: 55px;
-  animation: float 3s ease-in-out infinite;
-}
-
-.card p {
-  font-size: 16px;
-  line-height: 1.9;
-}
-
-.line {
-  width: 60px;
-  height: 1px;
-  background: #c79aaa;
-  margin: 30px auto;
-}
-
-h2 {
-  font-weight: 500;
-}
-
-.signature {
-  font-size: 13px !important;
-  opacity: 0.65;
-}
-
-.final {
-  margin-top: 25px;
+.note {
+  margin-top: 65px;
+  font-size: 12px;
+  opacity: .4;
   font-style: italic;
 }
 
@@ -125,18 +97,59 @@ h2 {
   display: none;
 }
 
-.heart {
-  position: fixed;
-  pointer-events: none;
-  animation: rise 3s ease-out forwards;
-  font-size: 20px;
-  z-index: 10;
+.content {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(220,190,200,.18), transparent 25%),
+    #faf9f7;
 }
 
-@keyframes appear {
+.card {
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(50,45,40,.08);
+  border-radius: 32px;
+  padding: 45px 30px;
+  box-shadow: 0 25px 80px rgba(40,35,30,.08);
+  backdrop-filter: blur(12px);
+}
+
+.ribbon {
+  text-align: center;
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  font-size: 27px;
+  font-weight: 400;
+  text-align: center;
+  margin: 10px 0 25px;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.9;
+  margin: 17px 0;
+}
+
+.divider {
+  width: 45px;
+  height: 1px;
+  background: rgba(50,45,40,.25);
+  margin: 38px auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.fade {
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(25px);
+    transform: translateY(20px);
   }
 
   to {
@@ -145,25 +158,28 @@ h2 {
   }
 }
 
-@keyframes float {
-  0%, 100% {
+.float {
+  animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%,100% {
     transform: translateY(0);
   }
 
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-7px);
   }
 }
 
-@keyframes rise {
-  from {
-    opacity: 1;
-    transform: translateY(0) rotate(0deg);
+@media (max-width: 500px) {
+  .card {
+    padding: 35px 23px;
+    border-radius: 25px;
   }
 
-  to {
-    opacity: 0;
-    transform: translateY(-250px) rotate(25deg);
+  .card p {
+    font-size: 15px;
   }
 }
 </style>
@@ -171,132 +187,101 @@ h2 {
 
 <body>
 
-<div class="page">
+<section class="screen hero">
 
-  <section class="intro" id="intro">
+  <div class="container fade">
 
-    <p class="tiny">a little something for you ✨</p>
+    <div class="float" style="font-size:34px;">🎀</div>
 
-    <h1>Hey, Aiba 🎀</h1>
+    <p class="tiny">10 September</p>
 
-    <p class="sub">
-      I made this little corner of the internet just for you.
+    <h1>Just for uh🎀</h1>
+
+    <p class="subtitle">
+      A little something I wanted you to have on your special day.
     </p>
 
-    <button onclick="openLetter()">
+    <a href="#letter" class="button">
       Open this 💌
-    </button>
+    </a>
 
-  </section>
+    <p class="note">
+      take your time :)
+    </p>
+
+  </div>
+
+</section>
 
 
-  <section class="letter hidden" id="letter">
+<section class="screen content" id="letter">
 
-    <div class="card">
+  <div class="container">
 
-      <div class="cake">🎂</div>
+    <div class="card fade">
 
-      <p class="tiny">today is your day ✨</p>
+      <div class="ribbon">🎀</div>
 
-      <h1>Happy Birthday, Aiba! 🤍</h1>
-
-      <p>
-        Thank you for listening to me, even when I have way too much to say.
-      </p>
-
-      <p>
-        Thank you for understanding me without making me feel like I have
-        to explain everything.
-      </p>
+      <h2>A little corner, just for you</h2>
 
       <p>
-        And most importantly, thank you for being someone I can talk to
-        without feeling judged.
+        Happiest birthday, Aiba! 🤍
       </p>
 
       <p>
-        Some people become special without even trying.
-        I'm genuinely grateful that you're one of those people in my life.
+        I wanted to make something a little different this year.
+        Not just a message that gets buried between all the other
+        birthday wishes, but something you can actually open and
+        read whenever you feel like it.
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="center">
+        There's more coming...
+      </p>
+
+      <div class="center">
+        <a href="#next" class="button">Keep going ✨</a>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="screen content" id="next">
+
+  <div class="container">
+
+    <div class="card fade">
+
+      <h2>Before anything else...</h2>
+
+      <p>
+        I hope today reminds you that you're appreciated,
+        cared about, and that your presence genuinely matters
+        to the people around you.
       </p>
 
       <p>
-        I hope this year gives you countless reasons to smile,
-        beautiful memories, and all the happiness you deserve. 🫶🏻
+        And I hope this little page gives you even a tiny
+        reason to smile today. 🎀
       </p>
 
-      <div class="line"></div>
+      <div class="divider"></div>
 
-      <h2>Happy Birthday, bestie. 🎀</h2>
-
-      <p class="signature">
-        — from someone who's really glad you exist 🤍
-      </p>
-
-      <button onclick="celebrate()">
-        One more thing ✨
-      </button>
-
-      <p id="final" class="final hidden">
-        No matter how much time passes, I'll always appreciate
-        the fact that you listened without judging. 🤍
+      <p class="center">
+        Happy Birthday once again 🤍
       </p>
 
     </div>
 
-  </section>
+  </div>
 
-</div>
-
-
-<script>
-
-function openLetter() {
-
-  document.getElementById("intro").classList.add("hidden");
-
-  document.getElementById("letter").classList.remove("hidden");
-
-  createHearts(12);
-}
-
-
-function celebrate() {
-
-  document.getElementById("final").classList.remove("hidden");
-
-  createHearts(30);
-}
-
-
-function createHearts(amount) {
-
-  for (let i = 0; i < amount; i++) {
-
-    setTimeout(() => {
-
-      const heart = document.createElement("div");
-
-      heart.className = "heart";
-
-      heart.innerHTML =
-        ["♡", "♥", "✦", "✨"][Math.floor(Math.random() * 4)];
-
-      heart.style.left =
-        Math.random() * 100 + "vw";
-
-      heart.style.bottom = "-20px";
-
-      document.body.appendChild(heart);
-
-      setTimeout(() => heart.remove(), 3000);
-
-    }, i * 100);
-
-  }
-
-}
-
-</script>
+</section>
 
 </body>
 </html>
