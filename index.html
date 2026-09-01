@@ -223,6 +223,67 @@ p{
   0%,100%{transform:scale(1);}
   50%{transform:scale(1.04);}
 }
+/* Strong cinematic reveal */
+.card{
+  opacity:0;
+  transform:translateY(70px) scale(.92);
+  filter:blur(8px);
+  transition:
+    opacity 1s cubic-bezier(.22,.61,.36,1),
+    transform 1s cubic-bezier(.22,.61,.36,1),
+    filter 1s ease;
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  filter:blur(0);
+}
+
+/* Make headings appear with a little movement */
+.card.show h2{
+  animation:titleReveal .9s .15s both;
+}
+
+.card.show p{
+  animation:textReveal .8s both;
+}
+
+.card.show p:nth-of-type(1){
+  animation-delay:.25s;
+}
+
+.card.show p:nth-of-type(2){
+  animation-delay:.4s;
+}
+
+.card.show p:nth-of-type(3){
+  animation-delay:.55s;
+}
+
+@keyframes titleReveal{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+    letter-spacing:3px;
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+    letter-spacing:normal;
+  }
+}
+
+@keyframes textReveal{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
 </style>
 </head>
 
