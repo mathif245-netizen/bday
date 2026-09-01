@@ -740,7 +740,23 @@ createFloatingEmoji();
 }
 
 },1800);
+document.querySelectorAll(".burst-button").forEach(button => {
+  button.addEventListener("click", () => {
+    emojiBurst();
 
+    const currentSection = button.closest("section");
+    const nextSection = currentSection.nextElementSibling;
+
+    if (nextSection) {
+      setTimeout(() => {
+        nextSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 300);
+    }
+  });
+});
 </script>
 <script>
 function startJourney() {
