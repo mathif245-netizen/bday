@@ -348,7 +348,7 @@ We’re also classmates from 6th but schl ke baad sech baat karthain
 It would've been better if we were frnds from earlier 😅
 </p>
 
-<button class="button burst-button">
+<button class="button burst-button" onclick="goToSection(1)">
 Continue ✨
 </button>
 
@@ -385,7 +385,7 @@ and I honestly love that about you.
 Somehow you make even the most random conversations fun.
 </p>
 
-<button class="button burst-button">
+<button class="button burst-button" onclick="goToSection(2)">
 There's more 😭
 </button>
 
@@ -422,7 +422,7 @@ Thume sometimes reels bheje ni tho bore maraltha nd some reels ku b react nd rep
 Don't underestimate these small things 😭
 </p>
 
-<button class="button burst-button">
+<button class="button burst-button" onclick="goToSection(3)">
 Okay enough about reels 😂
 </button>
 
@@ -469,7 +469,7 @@ You can just be yourself.
 Nd tired se frustrated se tha tho ki pray karo don’t worry much abt anything ma everything is temporary na
 </p>
 
-<button class="button burst-button">
+<button class="button burst-button" onclick="goToSection(4)">
 One last thing 🤍
 </button>
 
@@ -516,7 +516,7 @@ And if you ever feel tired or frustrated,
 you can always talk to me too.
 </p>
 
-<button class="button burst-button">
+<button class="button burst-button" onclick="goToSection(5)">
 Almost there 🎀
 </button>
 
@@ -781,6 +781,20 @@ function startJourney() {
             emoji.remove();
         }, 6000);
     }
+}
+function goToSection(number) {
+  emojiBurst();
+
+  const sections = document.querySelectorAll("#main section");
+
+  if (sections[number]) {
+    setTimeout(() => {
+      sections[number].scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }, 500);
+  }
 }
 </script>
 </body>
