@@ -204,6 +204,25 @@ p{
     font-size:15.5px;
   }
 }
+.card{
+  opacity:0;
+  transform:translateY(45px) scale(.97);
+  transition:opacity .8s ease, transform .8s ease;
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+.button{
+  animation:pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.04);}
+}
 </style>
 </head>
 
@@ -493,6 +512,20 @@ p{
   </div>
 
 </section>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, {
+  threshold: 0.15
+});
 
+document.querySelectorAll(".card").forEach((card) => {
+  observer.observe(card);
+});
+</script>
 </body>
 </html>
