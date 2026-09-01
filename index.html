@@ -23,44 +23,184 @@ body{
   overflow-x:hidden;
 }
 
+/* FLOATING EMOJIS */
+
+#emoji-container{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:10;
+}
+
+.floating-emoji{
+  position:absolute;
+  bottom:-60px;
+  animation:floatUp linear forwards;
+  opacity:.85;
+}
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(0) rotate(0deg);
+    opacity:0;
+  }
+
+  10%{
+    opacity:.85;
+  }
+
+  100%{
+    transform:translateY(-115vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+
+/* OPENING SCREEN */
+
+#opening{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px 20px;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(235,180,200,.25),transparent 30%),
+    radial-gradient(circle at 85% 75%,rgba(230,205,175,.25),transparent 32%),
+    #fbf8f5;
+}
+
+.opening-content{
+  animation:openingIn 1.2s ease both;
+}
+
+@keyframes openingIn{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.date{
+  font-family:Arial,sans-serif;
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  opacity:.5;
+}
+
+h1{
+  font-size:clamp(52px,14vw,88px);
+  font-weight:400;
+  margin:20px 0 15px;
+  letter-spacing:-3px;
+}
+
+.opening-text{
+  font-size:17px;
+  opacity:.7;
+}
+
+.button{
+  display:inline-block;
+  margin-top:28px;
+  padding:14px 28px;
+  border-radius:999px;
+  border:1px solid rgba(50,40,40,.15);
+  background:rgba(255,255,255,.8);
+  color:#302a2a;
+  font-family:Arial,sans-serif;
+  font-size:13px;
+  text-decoration:none;
+  cursor:pointer;
+  box-shadow:0 12px 35px rgba(40,30,30,.1);
+  transition:.3s ease;
+}
+
+.button:hover{
+  transform:translateY(-3px) scale(1.03);
+}
+
+.big-ribbon{
+  font-size:42px;
+  animation:gentleFloat 3s ease-in-out infinite;
+}
+
+@keyframes gentleFloat{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+
+/* MAIN CONTENT */
+
+#main{
+  display:none;
+}
+
+#main.active{
+  display:block;
+  animation:mainAppear .8s ease both;
+}
+
+@keyframes mainAppear{
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:1;
+  }
+}
+
 section{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:35px 22px;
-  position:relative;
+  padding:45px 20px;
 }
 
 .container{
   width:min(680px,100%);
-  position:relative;
-  z-index:2;
+}
+
+.card{
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(50,40,40,.08);
+  border-radius:30px;
+  padding:42px 30px;
+  box-shadow:0 25px 80px rgba(50,35,35,.09);
+  opacity:0;
+  transform:translateY(50px);
+  transition:1s cubic-bezier(.22,.61,.36,1);
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
 .center{
   text-align:center;
 }
 
-.small{
-  font-family:Arial,sans-serif;
-  font-size:11px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  opacity:.48;
-}
-
-h1{
-  font-size:clamp(50px,14vw,88px);
-  font-weight:400;
-  letter-spacing:-3px;
-  margin:20px 0 14px;
-}
-
 h2{
   font-size:clamp(28px,7vw,42px);
   font-weight:400;
-  margin:12px 0 25px;
+  margin:10px 0 25px;
 }
 
 p{
@@ -68,131 +208,66 @@ p{
   line-height:1.9;
 }
 
-.hero{
-  background:
-    radial-gradient(circle at 15% 20%,rgba(214,170,185,.25),transparent 27%),
-    radial-gradient(circle at 85% 75%,rgba(220,190,160,.22),transparent 30%),
-    #fbf8f5;
-}
-
-.hero-sub{
-  max-width:440px;
-  margin:auto;
-  opacity:.68;
-}
-
-.button{
-  display:inline-block;
-  margin-top:30px;
-  padding:14px 27px;
-  border-radius:999px;
-  border:1px solid rgba(50,40,40,.15);
-  background:rgba(255,255,255,.7);
-  color:#302a2a;
-  text-decoration:none;
-  font-family:Arial,sans-serif;
-  font-size:13px;
-  transition:.3s ease;
-  box-shadow:0 12px 35px rgba(40,30,30,.08);
-}
-
-.button:hover{
-  transform:translateY(-3px);
-  box-shadow:0 18px 45px rgba(40,30,30,.13);
-}
-
-.card{
-  background:rgba(255,255,255,.76);
-  border:1px solid rgba(50,40,40,.08);
-  border-radius:30px;
-  padding:42px 30px;
-  box-shadow:0 25px 80px rgba(50,35,35,.08);
-  backdrop-filter:blur(14px);
-}
-
 .divider{
   width:48px;
   height:1px;
-  background:rgba(50,40,40,.2);
+  background:rgba(50,40,40,.22);
   margin:35px auto;
 }
 
 .highlight{
-  background:rgba(245,225,232,.48);
+  background:rgba(245,225,232,.5);
   border-radius:22px;
-  padding:23px 22px;
+  padding:22px;
   margin:25px 0;
 }
 
-.reels{
-  background:rgba(235,229,218,.5);
+.reels-section{
+  background:rgba(235,229,218,.55);
 }
 
-.faith{
-  background:rgba(226,231,220,.45);
+.faith-section{
+  background:rgba(226,231,220,.48);
 }
 
-.final{
+.final-section{
   background:
     radial-gradient(circle at 50% 45%,rgba(220,180,195,.24),transparent 40%),
     #fbf8f5;
 }
 
-.fade{
-  animation:fadeUp 1s ease both;
+.quote{
+  font-style:italic;
+  text-align:center;
+  opacity:.75;
 }
 
-@keyframes fadeUp{
+.hidden-message{
+  display:none;
+  margin-top:30px;
+  animation:messageIn .8s ease both;
+}
+
+.hidden-message.show-message{
+  display:block;
+}
+
+@keyframes messageIn{
   from{
     opacity:0;
-    transform:translateY(24px);
+    transform:translateY(20px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
   }
 }
 
-.float{
-  animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-8px);}
-}
-
-.sparkle{
-  position:absolute;
-  font-size:18px;
-  opacity:.35;
-  animation:drift 6s ease-in-out infinite;
-}
-
-.s1{top:18%;left:12%;}
-.s2{top:30%;right:13%;animation-delay:1s;}
-.s3{bottom:20%;left:18%;animation-delay:2s;}
-.s4{bottom:15%;right:18%;animation-delay:3s;}
-
-@keyframes drift{
-  0%,100%{
-    transform:translateY(0) rotate(0deg);
-  }
-  50%{
-    transform:translateY(-15px) rotate(10deg);
-  }
-}
-
-.quote{
-  font-style:italic;
-  text-align:center;
-  opacity:.72;
-  font-size:18px;
-}
-
 @media(max-width:500px){
+
   section{
-    padding:28px 18px;
+    padding:35px 18px;
   }
 
   .card{
@@ -203,443 +278,470 @@ p{
   p{
     font-size:15.5px;
   }
-}
-.card{
-  opacity:0;
-  transform:translateY(45px) scale(.97);
-  transition:opacity .8s ease, transform .8s ease;
-}
 
-.card.show{
-  opacity:1;
-  transform:translateY(0) scale(1);
-}
-
-.button{
-  animation:pulse 2.5s ease-in-out infinite;
-}
-
-@keyframes pulse{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.04);}
-}
-/* Strong cinematic reveal */
-.card{
-  opacity:0;
-  transform:translateY(70px) scale(.92);
-  filter:blur(8px);
-  transition:
-    opacity 1s cubic-bezier(.22,.61,.36,1),
-    transform 1s cubic-bezier(.22,.61,.36,1),
-    filter 1s ease;
-}
-
-.card.show{
-  opacity:1;
-  transform:translateY(0) scale(1);
-  filter:blur(0);
-}
-
-/* Make headings appear with a little movement */
-.card.show h2{
-  animation:titleReveal .9s .15s both;
-}
-
-.card.show p{
-  animation:textReveal .8s both;
-}
-
-.card.show p:nth-of-type(1){
-  animation-delay:.25s;
-}
-
-.card.show p:nth-of-type(2){
-  animation-delay:.4s;
-}
-
-.card.show p:nth-of-type(3){
-  animation-delay:.55s;
-}
-
-@keyframes titleReveal{
-  from{
-    opacity:0;
-    transform:translateY(25px);
-    letter-spacing:3px;
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-    letter-spacing:normal;
-  }
-}
-
-@keyframes textReveal{
-  from{
-    opacity:0;
-    transform:translateY(18px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-.emoji-float{
-  position:fixed;
-  bottom:-60px;
-  font-size:28px;
-  pointer-events:none;
-  z-index:1;
-  opacity:.45;
-  animation:emojiUp 10s linear infinite;
-}
-
-.e1{
-  left:8%;
-  animation-delay:0s;
-}
-
-.e2{
-  left:30%;
-  animation-delay:2.5s;
-}
-
-.e3{
-  left:65%;
-  animation-delay:5s;
-}
-
-.e4{
-  left:88%;
-  animation-delay:7.5s;
-}
-
-@keyframes emojiUp{
-  0%{
-    transform:translateY(0) rotate(0deg);
-    opacity:0;
-  }
-
-  10%{
-    opacity:.45;
-  }
-
-  90%{
-    opacity:.45;
-  }
-
-  100%{
-    transform:translateY(-115vh) rotate(360deg);
-    opacity:0;
-  }
 }
 </style>
 </head>
 
 <body>
 
+<div id="emoji-container"></div>
+
+
 <!-- OPENING -->
 
-<section class="hero">
+<div id="opening">
 
-  <span class="sparkle s1">✦</span>
-  <span class="sparkle s2">♡</span>
-  <span class="sparkle s3">✦</span>
-  <span class="sparkle s4">♡</span>
+  <div class="opening-content">
 
-  <div class="container center fade">
+    <div class="big-ribbon">🎀</div>
 
-    <div class="float" style="font-size:38px;">🎀</div>
-
-    <div class="small">10 September</div>
+    <div class="date">10 September</div>
 
     <h1>Just for uh🎀</h1>
 
-    <p class="hero-sub">
+    <p class="opening-text">
       Chupke ek try karyasoo website se wish karne😋
     </p>
 
-    <a href="#birthday" class="button">
+    <button class="button" onclick="openBirthday()">
       Open this 💌
-    </a>
+    </button>
 
   </div>
 
-</section>
+</div>
 
 
-<!-- BIRTHDAY -->
+<!-- MAIN PAGE -->
 
-<section id="birthday">
+<div id="main">
 
-  <div class="container">
 
-    <div class="card fade">
+<section>
 
-      <div class="center" style="font-size:38px;">🎂</div>
+<div class="container">
 
-      <h2 class="center">
-        Happiest wishes drrr!! 🎂🎀
-      </h2>
+<div class="card">
 
-      <div class="divider"></div>
+<div class="center" style="font-size:40px;">🎂</div>
 
-      <p>
-        idk how we became close but it feels good yrrr
-      </p>
+<h2 class="center">
+Happiest wishes drrr!! 🎂🎀
+</h2>
 
-      <p>
-        Thumare saath baat karne comfortable se ha nd judged feel gi nai ha
-      </p>
+<div class="divider"></div>
 
-      <p>
-        We’re also classmates from 6th but schl ke baad sech baat karthain
-      </p>
+<p>
+idk how we became close but it feels good yrrr
+</p>
 
-      <p>
-        It would've been better if we were frnds from earlier 😅
-      </p>
+<p>
+Thumare saath baat karne comfortable se ha nd judged feel gi nai ha
+</p>
 
-      <a href="#funny" class="button">
-        Continue ✨
-      </a>
+<p>
+We’re also classmates from 6th but schl ke baad sech baat karthain
+</p>
 
-    </div>
+<p>
+It would've been better if we were frnds from earlier 😅
+</p>
 
-  </div>
+<button class="button burst-button">
+Continue ✨
+</button>
+
+</div>
+
+</div>
 
 </section>
 
 
 <!-- HUMOUR -->
 
-<section id="funny">
+<section>
 
-  <div class="container">
+<div class="container">
 
-    <div class="card fade">
+<div class="card">
 
-      <div class="center" style="font-size:35px;">😂</div>
+<div class="center" style="font-size:38px;">😂</div>
 
-      <h2 class="center">
-        One thing I like about you
-      </h2>
+<h2 class="center">
+One thing I like about you
+</h2>
 
-      <p>
-        You’re genuinely funny 😭 I really like your sense of humour.
-        Even our most random conversations somehow become funny,
-        and I honestly love that about you.
-      </p>
+<p>
+You’re genuinely funny 😭 I really like your sense of humour.
+Even our most random conversations somehow become funny,
+and I honestly love that about you.
+</p>
 
-      <div class="divider"></div>
+<div class="divider"></div>
 
-      <p class="quote">
-        Somehow you make even the most random conversations fun.
-      </p>
+<p class="quote">
+Somehow you make even the most random conversations fun.
+</p>
 
-      <a href="#reels" class="button">
-        There's more 😭
-      </a>
+<button class="button burst-button">
+There's more 😭
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
 <!-- REELS -->
 
-<section id="reels" class="reels">
+<section class="reels-section">
 
-  <div class="container">
+<div class="container">
 
-    <div class="card fade">
+<div class="card">
 
-      <div class="center" style="font-size:35px;">📱</div>
+<div class="center" style="font-size:38px;">📱</div>
 
-      <h2 class="center">
-        And your reels 😐
-      </h2>
+<h2 class="center">
+And your reels 😐
+</h2>
 
-      <div class="highlight">
+<div class="highlight">
 
-        <p>
-          Thume sometimes reels bheje ni tho bore maraltha nd some reels ku b react nd reply b kartheni 😐thabb Rathi mai low se feel hotun
-        </p>
+<p>
+Thume sometimes reels bheje ni tho bore maraltha nd some reels ku b react nd reply b kartheni 😐thabb Rathi mai low se feel hotun
+</p>
 
-      </div>
+</div>
 
-      <p class="center">
-        Don't underestimate these small things 😭
-      </p>
+<p class="center">
+Don't underestimate these small things 😭
+</p>
 
-      <a href="#there" class="button">
-        Okay enough about reels 😂
-      </a>
+<button class="button burst-button">
+Okay enough about reels 😂
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
-<!-- BEING THERE -->
+<!-- COMFORT -->
 
-<section id="there">
+<section>
 
-  <div class="container">
+<div class="container">
 
-    <div class="card fade">
+<div class="card">
 
-      <div class="center" style="font-size:35px;">🤍</div>
+<div class="center" style="font-size:38px;">🤍</div>
 
-      <h2 class="center">
-        And one more thing
-      </h2>
+<h2 class="center">
+And one more thing
+</h2>
 
-      <p>
-        If you're ever tired, frustrated or feeling low,
-        you don't have to pretend that everything is fine.
-      </p>
+<p>
+If you're ever tired, frustrated or feeling low,
+you don't have to pretend that everything is fine.
+</p>
 
-      <p>
-        You can be open about it with me. You don't have to
-        explain everything perfectly or worry about being judged.
-      </p>
+<p>
+You can be open about it with me. You don't have to explain
+everything perfectly or worry about being judged.
+</p>
 
-      <div class="highlight">
+<div class="highlight">
 
-        <p class="quote">
-          You can just be yourself.
-        </p>
+<p class="quote">
+You can just be yourself.
+</p>
 
-      </div>
+</div>
 
-      <p>
-        Nd tired se frustrated se tha tho ki pray karo don’t worry much abt anything ma everything is temporary na
-      </p>
+<p>
+Nd tired se frustrated se tha tho ki pray karo don’t worry much abt anything ma everything is temporary na
+</p>
 
-      <a href="#faith" class="button">
-        One last thing 🤍
-      </a>
+<button class="button burst-button">
+One last thing 🤍
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
 <!-- FAITH -->
 
-<section id="faith" class="faith">
+<section class="faith-section">
 
-  <div class="container">
+<div class="container">
 
-    <div class="card fade">
+<div class="card">
 
-      <div class="center" style="font-size:38px;">🕊️</div>
+<div class="center" style="font-size:38px;">🕊️</div>
 
-      <h2 class="center">
-        When things feel heavy
-      </h2>
+<h2 class="center">
+When things feel heavy
+</h2>
 
-      <p>
-        Whenever things feel too much, pray.
-        Talk to Allah, make dua and trust Him.
-      </p>
+<p>
+Whenever things feel too much, pray.
+Talk to Allah, make dua and trust Him.
+</p>
 
-      <p>
-        You don't have to have everything figured out.
-        Some things take time, and that's okay.
-      </p>
+<p>
+You don't have to have everything figured out.
+Some things take time, and that's okay.
+</p>
 
-      <div class="divider"></div>
+<div class="divider"></div>
 
-      <p class="quote">
-        Allah knows what is in your heart,
-        even the things you can't put into words.
-      </p>
+<p class="quote">
+Allah knows what is in your heart,
+even the things you can't put into words.
+</p>
 
-      <p>
-        And if you ever feel tired or frustrated,
-        you can always talk to me too.
-      </p>
+<p>
+And if you ever feel tired or frustrated,
+you can always talk to me too.
+</p>
 
-      <a href="#final" class="button">
-        Almost there 🎀
-      </a>
+<button class="button burst-button">
+Almost there 🎀
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
 <!-- FINAL -->
 
-<section id="final" class="final">
+<section class="final-section">
 
-  <div class="container">
+<div class="container">
 
-    <div class="card fade center">
+<div class="card center">
 
-      <div class="float" style="font-size:42px;">🎀</div>
+<div class="big-ribbon">🎀</div>
 
-      <h2>
-        That's all drrr 😭
-      </h2>
+<h2>
+That's all drrr 😭
+</h2>
 
-      <div class="divider"></div>
+<div class="divider"></div>
 
-      <p>
-        I just wanted to make something a little different
-        for your birthday.
-      </p>
+<p>
+I just wanted to make something a little different
+for your birthday.
+</p>
 
-      <p>
-        I hope you liked this little surprise.
-      </p>
+<p>
+I hope you liked this little surprise.
+</p>
 
-      <p style="font-size:21px;">
-        Happiest birthday once again!! 🎂🎀
-      </p>
+<p style="font-size:21px;">
+Happiest birthday once again!! 🎂🎀
+</p>
 
-      <p>
-        Stay happy, take care of yourself,
-        and keep being you. 🤍
-      </p>
+<p>
+Stay happy, take care of yourself,
+and keep being you. 🤍
+</p>
 
-      <div style="margin-top:35px;font-size:25px;">
-        ✨ 🎀 ✨
-      </div>
+<button class="button" onclick="showLastMessage()">
+One more thing ✨
+</button>
 
-    </div>
+<div id="last-message" class="hidden-message">
 
-  </div>
+<p class="quote">
+Anywayyy enough emotional damage for one birthday 😭🎀
+</p>
+
+<p>
+Take care drrr 🤍
+</p>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
+
+
+</div>
+
+
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, {
-  threshold: 0.15
+
+const emojis = [
+"🤍","💖","🌸","✨","🎀","💗","🌷","🫶🏻"
+];
+
+
+/* CREATE FLOATING EMOJIS */
+
+function createFloatingEmoji(){
+
+  const emoji = document.createElement("div");
+
+  emoji.className = "floating-emoji";
+
+  emoji.innerText =
+    emojis[Math.floor(Math.random()*emojis.length)];
+
+  emoji.style.left =
+    Math.random()*100 + "vw";
+
+  emoji.style.fontSize =
+    (18 + Math.random()*18) + "px";
+
+  const duration =
+    6 + Math.random()*5;
+
+  emoji.style.animationDuration =
+    duration + "s";
+
+  document
+    .getElementById("emoji-container")
+    .appendChild(emoji);
+
+  setTimeout(()=>{
+    emoji.remove();
+  },duration*1000);
+
+}
+
+
+/* EMOJI BURST */
+
+function emojiBurst(){
+
+  for(let i=0;i<18;i++){
+
+    setTimeout(
+      createFloatingEmoji,
+      i*120
+    );
+
+  }
+
+}
+
+
+/* OPEN PAGE */
+
+function openBirthday(){
+
+  document
+    .getElementById("opening")
+    .style.display="none";
+
+  document
+    .getElementById("main")
+    .classList.add("active");
+
+  emojiBurst();
+
+  setTimeout(emojiBurst,900);
+
+}
+
+
+/* BUTTON BURSTS */
+
+document
+.querySelectorAll(".burst-button")
+.forEach(button=>{
+
+  button.addEventListener(
+    "click",
+    emojiBurst
+  );
+
 });
 
-document.querySelectorAll(".card").forEach((card) => {
-  observer.observe(card);
+
+/* FINAL MESSAGE */
+
+function showLastMessage(){
+
+  document
+    .getElementById("last-message")
+    .classList.add("show-message");
+
+  emojiBurst();
+
+}
+
+
+/* SCROLL REVEAL */
+
+const observer =
+new IntersectionObserver(
+(entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target
+.classList
+.add("show");
+
+}
+
 });
+
+},
+{
+threshold:.15
+}
+);
+
+
+document
+.querySelectorAll(".card")
+.forEach(card=>{
+
+observer.observe(card);
+
+});
+
+
+/* OCCASIONAL BACKGROUND FLOATING */
+
+setInterval(()=>{
+
+if(
+document
+.getElementById("main")
+.classList
+.contains("active")
+){
+
+createFloatingEmoji();
+
+}
+
+},1800);
+
 </script>
-<div class="emoji-float e1">🎀</div>
-<div class="emoji-float e2">✨</div>
-<div class="emoji-float e3">🤍</div>
-<div class="emoji-float e4">🌸</div>
+
 </body>
 </html>
